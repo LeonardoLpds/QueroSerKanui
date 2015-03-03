@@ -76,4 +76,3 @@ class DiscoverNumber
         return false;
     }
 }
-?>
