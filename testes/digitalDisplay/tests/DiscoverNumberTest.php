@@ -1,7 +1,7 @@
 <?php
-include_once(getcwd().'/app/classes/DiscoverNumber.php');
+include_once(__DIR__.'/../app/classes/DiscoverNumber.php');
 
-use app\classes\DiscoverNumber as DiscoverNumber;
+use app\classes\DiscoverNumber;
 
 class DiscoverNumberTest extends PHPUnit_Framework_TestCase {
     protected $dNumber;

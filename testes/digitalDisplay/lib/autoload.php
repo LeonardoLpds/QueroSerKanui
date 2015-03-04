@@ -8,5 +8,5 @@ function __autoload($className){
         $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-    include_once(getcwd()."/".$fileName);
+    include_once(getcwd().DIRECTORY_SEPARATOR.$fileName);
 }

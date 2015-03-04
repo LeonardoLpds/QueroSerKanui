@@ -1,7 +1,7 @@
 <?php
-include_once(getcwd().'/app/classes/Parser.php');
+include_once(__DIR__.'/../app/classes/Parser.php');
 
-use app\classes\Parser as Parser;
+use app\classes\Parser;
 
 class ParserTest extends PHPUnit_Framework_TestCase {
     protected $parser;
@@ -15,7 +15,7 @@ class ParserTest extends PHPUnit_Framework_TestCase {
         $file = null;
         $this->assertEquals(false, $this->parser->openFile($file));
 
-        $file = $_SERVER['DOCUMENT_ROOT'];
+        $file = getcwd();
         $this->assertEquals(false, $this->parser->openFile($file));
     }
 
@@ -34,7 +34,7 @@ class ParserTest extends PHPUnit_Framework_TestCase {
         $this->parser->openFile(null);
         $this->assertEquals(false, $this->parser->divideSequences());
 
-        $this->parser->openFile(getcwd().'/app/classes/Parser.php');
+        $this->parser->openFile(getcwd().'/digitalDisplay/app/classes/Parser.php');
         $this->assertEquals(true, $this->parser->divideSequences()); //Apenas divide de 4 em 4 linhas
     }
 
@@ -44,7 +44,7 @@ class ParserTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals(false, $this->parser->divideNumbersInSequence(2));
 
-        $this->parser->openFile(getcwd().'/app/classes/Parser.php');
+        $this->parser->openFile(getcwd().'/digitalDisplay/app/classes/Parser.php');
         $this->parser->divideSequences();
         $this->assertEquals(true, $this->parser->divideNumbersInSequence(0)); //Apenas faz SubStrings
     }
@@ -67,7 +67,7 @@ class ParserTest extends PHPUnit_Framework_TestCase {
     public function testDoParse(){
         $this->assertEquals(false, $this->parser->doParse());
 
-        $this->parser->openFile(getcwd().'/app/classes/Parser.php');
+        $this->parser->openFile(getcwd().'/digitalDisplay/app/classes/Parser.php');
         $this->assertEquals(true, $this->parser->doParse()); //Erro de formato apenas
 
         $this->parser->openFile('');

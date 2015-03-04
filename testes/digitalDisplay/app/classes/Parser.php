@@ -1,6 +1,6 @@
 <?php
 namespace app\classes;
-include_once(getcwd().'/app/classes/DiscoverNumber.php');
+include_once(__DIR__.'/DiscoverNumber.php');
 
 class Parser extends DiscoverNumber
 {
