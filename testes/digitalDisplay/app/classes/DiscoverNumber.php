@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class DiscoverNumber
 {
     public function verifyNumber($number)

@@ -1,5 +1,5 @@
 <?php
-include_once("DiscoverNumber.php");
+namespace app\classes;
 
 class Parser extends DiscoverNumber
 {
