@@ -8,6 +8,5 @@ function __autoload($className){
         $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-
-    include_once($_SERVER['DOCUMENT_ROOT'].'testes/digitalDisplay/'.$fileName);
+    include_once(getcwd()."/".$fileName);
 }
