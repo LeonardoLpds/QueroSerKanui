@@ -1,5 +1,5 @@
 <?php
-    $file = fopen("data.txt", "r");
+    $file = fopen("shels.txt", "r");
     $text = "";
     while (!feof ($file)) {
         $text .= fgets($file);
