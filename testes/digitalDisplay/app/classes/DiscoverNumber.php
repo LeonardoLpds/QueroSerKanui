@@ -5,6 +5,9 @@ class DiscoverNumber
 {
     public function verifyNumber($number)
     {
+        if(count($number) < 3){
+            return false;
+        }
         if(
             $number[0] == " _ " &&
             $number[1] == "| |" &&
