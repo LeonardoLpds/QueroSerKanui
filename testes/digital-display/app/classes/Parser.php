@@ -17,7 +17,11 @@ class Parser extends DiscoverNumber
 
     public function closeFile()
     {
+        if(!isset($this->file)){
+            return false;
+        }
         fclose($this->file);
+        return true;
     }
 
     public function divideSequences()
