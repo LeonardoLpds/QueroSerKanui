@@ -12,7 +12,7 @@ class DiscoverNumberTest extends PHPUnit_Framework_TestCase {
 
     public function testVerifyNumber(){
         $number = null;
-         $this->assertEquals(false, $this->dNumber->verifyNumber($number));
+        $this->assertEquals(false, $this->dNumber->verifyNumber($number));
 
         $number = array();
         $this->assertEquals(false, $this->dNumber->verifyNumber($number));

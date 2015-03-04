@@ -1,5 +1,6 @@
 <?php
 namespace app\classes;
+include_once(getcwd().'/app/classes/DiscoverNumber.php');
 
 class Parser extends DiscoverNumber
 {
@@ -8,7 +9,10 @@ class Parser extends DiscoverNumber
 
     public function openFile($fileName)
     {
-        if (!file_exists($fileName) || !is_file($fileName)) {
+        if (isset($this->file)) {
+            $this->closeFile();
+        }
+        if (!file_exists($fileName) || !is_file($fileName) || empty($fileName)) {
             return false;
         }
         $this->file = fopen($fileName, "r");
@@ -21,6 +25,7 @@ class Parser extends DiscoverNumber
             return false;
         }
         fclose($this->file);
+        $this->file = null;
         return true;
     }
 
@@ -39,7 +44,7 @@ class Parser extends DiscoverNumber
         return true;
     }
 
-    public function divideNumbersInSequence($numOfSequence)
+    public function divideNumbersInSequence($numOfSequence = null)
     {
         if (!isset($this->sequence[$numOfSequence])) {
             return false;
@@ -55,8 +60,11 @@ class Parser extends DiscoverNumber
         return true;
     }
 
-    public function mountNumericSequence($sequence)
+    public function mountNumericSequence($sequence = null)
     {
+        if (!is_array($sequence)) {
+            return false;
+        }
         $numericSequence = "";
         foreach ($sequence as $key => $number) {
             if ($this->verifyNumber($number) === false) {
@@ -69,12 +77,15 @@ class Parser extends DiscoverNumber
 
     public function doParse()
     {
+        if(!isset($this->file)){
+            return false;
+        }
         $this->divideSequences();
         for ($i=0; $i < count($this->sequence) ; $i++) { 
             $this->divideNumbersInSequence($i);
             $numericSequence = $this->mountNumericSequence($this->sequence[$i]);
             echo ($numericSequence ? $numericSequence : "/!\\erro de formato/!\\")."<br>";
         }
-        
+        return true;
     }
 }
