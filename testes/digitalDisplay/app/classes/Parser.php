@@ -9,11 +9,11 @@ class Parser extends DiscoverNumber
 
     public function openFile($fileName)
     {
-        if (isset($this->file)) {
-            $this->closeFile();
-        }
         if (!file_exists($fileName) || !is_file($fileName) || empty($fileName)) {
             return false;
+        }
+        if (isset($this->file)) {
+            $this->closeFile();
         }
         $this->file = fopen($fileName, "r");
         return true;
